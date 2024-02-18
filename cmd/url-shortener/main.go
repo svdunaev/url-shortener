@@ -25,13 +25,11 @@ func main() {
 	log.Info("starting url-shortener", slog.String("env", cfg.Env))
 	log.Debug("debug messages are enabled")
 
-	storage, err := postgre.New()
+	_, err := postgre.New()
 	if err != nil {
 		log.Error("failed to init storage", sl.Err(err))
 		os.Exit(1)
 	}
-
-	_ = storage
 
 	fmt.Println("connected ")
 	//TODO: init router chi, "chi render"
